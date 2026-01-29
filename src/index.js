@@ -28,4 +28,7 @@ chat.sendMessage(efe, 'Yes, it is.')
 console.log('Chat messages:', chat.messages)
 
 roomListing.closeListing()
-console.log(roomListing.isActive)
+console.log('Efe room listing is active:', roomListing.isActive)
+
+roomListing.reOpenListing()
+console.log('Efe room listing is active:', roomListing.isActive)
