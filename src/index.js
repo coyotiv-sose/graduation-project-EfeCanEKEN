@@ -4,8 +4,8 @@ const RoommateListing = require('./roommateListing')
 const Chat = require('./chat')
 const FavoriteManager = require('./favoriteManager')
 
-const efe = new User('efe@mail.com', 25, 'Developer', 8000)
-const ali = new User('ali@mail.com', 28, 'Designer', 7000)
+const efe = new User('efe', 'efe@mail.com', 25, 'Developer', 8000)
+const ali = new User('ali', 'ali@mail.com', 28, 'Designer', 7000)
 
 const roomListing = new RoomListing('Ankara', 6000, true, efe)
 const roommateListing = new RoommateListing('Ankara', 7000, ali)
@@ -27,8 +27,25 @@ chat.sendMessage(efe, 'Yes, it is.')
 
 console.log('Chat messages:', chat.messages)
 
-roomListing.closeListing()
-console.log('Efe room listing is active:', roomListing.isActive)
+// roomListing.closeListing()
+// console.log('Efe room listing is active:', roomListing.isActive)
 
-roomListing.reOpenListing()
-console.log('Efe room listing is active:', roomListing.isActive)
+// roomListing.reOpenListing()
+// console.log('Efe room listing is active:', roomListing.isActive)
+
+// Only owner can close this listing
+roomListing.closeListing(ali)
+console.log('Is active after Ali tries to close:', roomListing.isActive)
+// it should be true
+
+roomListing.closeListing(efe)
+console.log('Is active after Efe closes:', roomListing.isActive)
+// it should be false
+
+roomListing.reOpenListing(ali)
+console.log('Is active after Ali tries to reopen:', roomListing.isActive)
+// it should be false
+
+roomListing.reOpenListing(efe)
+console.log('Is active after Efe reopens:', roomListing.isActive)
+// it should be true

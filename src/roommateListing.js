@@ -7,11 +7,22 @@ class RoommateListing {
     this.isActive = true
   }
 
-  closeListing() {
+  closeListing(user) {
+    if (user !== this.owner) {
+      console.log(`${user.name}: Only owner can close this listing`)
+
+      return
+    }
+
     this.isActive = false
   }
 
-  reOpenListing() {
+  reOpenListing(user) {
+    if (user !== this.owner) {
+      console.log(`${user.name}: Only owner can reopen this listing`)
+      return
+    }
+
     this.isActive = true
   }
 }
