@@ -26,3 +26,6 @@ chat.sendMessage(ali, 'Is the room still available?')
 chat.sendMessage(efe, 'Yes, it is.')
 
 console.log('Chat messages:', chat.messages)
+
+roomListing.closeListing()
+console.log(roomListing.isActive)
