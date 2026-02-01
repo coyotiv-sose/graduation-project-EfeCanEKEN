@@ -1,16 +1,17 @@
-const Message = require("./message");
+const Message = require('./message')
 
 class Chat {
+  messages = []
+
   constructor(user1, user2) {
-    this.user1 = user1;
-    this.user2 = user2;
-    this.messages = [];
+    this.user1 = user1
+    this.user2 = user2
   }
 
   sendMessage(sender, text) {
-    const message = new Message(sender, text);
-    this.messages.push(message);
+    const message = new Message(sender, text)
+    this.messages.push(message)
   }
 }
 
-module.exports = Chat;
+module.exports = Chat

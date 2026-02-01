@@ -1,14 +1,14 @@
 const User = require('./user')
-const RoomListing = require('./roomListing')
-const RoommateListing = require('./roommateListing')
+const RoomOfferListing = require('./roomOfferListing')
+const RoomRequestListing = require('./roomRequestListing')
 const Chat = require('./chat')
 const FavoriteManager = require('./favoriteManager')
 
 const efe = new User('efe', 'efe@mail.com', 25, 'Developer', 8000)
 const ali = new User('ali', 'ali@mail.com', 28, 'Designer', 7000)
 
-const roomListing = new RoomListing('Ankara', 6000, true, efe)
-const roommateListing = new RoommateListing('Ankara', 7000, ali)
+const roomListing = new RoomOfferListing('Ankara', 6000, true, efe)
+const roommateListing = new RoomRequestListing('Ankara', 7000, ali)
 
 efe.addListing(roomListing)
 ali.addListing(roommateListing)
@@ -26,12 +26,6 @@ chat.sendMessage(ali, 'Is the room still available?')
 chat.sendMessage(efe, 'Yes, it is.')
 
 console.log('Chat messages:', chat.messages)
-
-// roomListing.closeListing()
-// console.log('Efe room listing is active:', roomListing.isActive)
-
-// roomListing.reOpenListing()
-// console.log('Efe room listing is active:', roomListing.isActive)
 
 // Only owner can close this listing
 roomListing.closeListing(ali)

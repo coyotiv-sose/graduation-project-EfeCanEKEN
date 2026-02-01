@@ -1,16 +1,17 @@
-class RoomListing {
+class RoomOfferListing {
+  images = []
+
   constructor(location, price, hasDeposit, owner) {
     this.type = 'ROOM'
     this.location = location
     this.price = price
     this.hasDeposit = hasDeposit
+    // images list olarak oluştur.
     this.owner = owner
     this.isActive = true
   }
 
   closeListing(user) {
-    // ileri de ayrı bir sınıf olarakta ayrılabilir?
-
     if (user !== this.owner) {
       console.log(`${user.name}: Only owner can close this listing`)
 
@@ -30,4 +31,4 @@ class RoomListing {
   }
 }
 
-module.exports = RoomListing
+module.exports = RoomOfferListing

@@ -1,4 +1,4 @@
-class RoommateListing {
+class RoomRequestListing {
   constructor(location, maxBudget, owner) {
     this.type = 'ROOMMATE'
     this.location = location
@@ -27,4 +27,4 @@ class RoommateListing {
   }
 }
 
-module.exports = RoommateListing
+module.exports = RoomRequestListing
