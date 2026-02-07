@@ -29,6 +29,17 @@ class RoomOfferListing {
 
     this.isActive = true
   }
+
+  static list = []
+
+  static create({ location, price, hasDeposit, owner }) {
+    console.log(
+      `Creating a RoomOfferListing. owner: ${owner}, location: ${location}, price: ${price}, has deposit: ${hasDeposit}`
+    )
+    const roomOfferListing = new RoomOfferListing(location, price, hasDeposit, owner)
+    RoomOfferListing.list.push(roomOfferListing)
+    return roomOfferListing
+  }
 }
 
 module.exports = RoomOfferListing
