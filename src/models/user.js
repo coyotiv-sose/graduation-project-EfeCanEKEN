@@ -1,7 +1,9 @@
 const RoomOfferListing = require('./roomOfferListing')
+const RoomSeekerListing = require('./roomSeekerListing')
 
 class User {
   listings = []
+
   favorites = []
 
   constructor(name, email, age, job, budget) {
@@ -12,11 +14,21 @@ class User {
     this.budget = budget
   }
 
-  createListing({ location, price, hasDeposit, owner }) {
-    const listing = RoomOfferListing.create({ location, price, hasDeposit, owner })
-    this.listings.push(listing)
+  createOfferListing({ location, price, hasDeposit, owner }) {
+    const offer = RoomOfferListing.create({ location, price, hasDeposit, owner })
+    this.listings.push(offer)
 
-    return listing
+    return offer
+  }
+
+  createSeekerListing({ location, price, owner }) {
+    const seeker = RoomSeekerListing.create({
+      location,
+      price,
+      owner,
+    })
+    this.listings.push(seeker)
+    return seeker
   }
 
   static create({ name }) {

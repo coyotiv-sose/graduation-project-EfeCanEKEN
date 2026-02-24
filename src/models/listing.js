@@ -1,10 +1,12 @@
-class RoomRequestListing {
-  constructor(location, maxBudget, owner) {
-    this.type = 'ROOMMATE'
+class Listing {
+  createdAt = new Date()
+
+  isActive = true
+
+  constructor({ location, price, owner }) {
     this.location = location
-    this.maxBudget = maxBudget
+    this.price = price
     this.owner = owner
-    this.isActive = true
   }
 
   closeListing(user) {
@@ -27,4 +29,4 @@ class RoomRequestListing {
   }
 }
 
-module.exports = RoomRequestListing
+module.exports = Listing
