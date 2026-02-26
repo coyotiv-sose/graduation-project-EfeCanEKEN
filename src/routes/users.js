@@ -4,19 +4,21 @@ const User = require('../models/user')
 const router = express.Router()
 
 /* GET users listing. */
-router.get('/', function (req, res, next) {
-  res.send(User.list)
+router.get('/', async function (req, res, next) {
+  res.send(await User.find())
 })
-
-router.post('/', (req, res) => {
-  const user = User.create({ name: req.body.name })
+// create a new user
+router.post('/', async function (req, res, next) {
+  const user = await User.create({ name: req.body.name })
   res.send(user)
 })
 
-router.post('/:userId/roomOfferListings', function (req, res) {
-  const user = User.list.find(u => u.name === req.params.userId)
+// create a room offer listing for a user
+router.post('/:userId/roomOfferListings', async function (req, res) {
+  // const user = User.list.find(u => u.name === req.params.userId)
+  const user = await User.findById(req.params.user)
 
-  const roomOfferListing = user.createOfferListing({
+  const roomOfferListing = await user.createOfferListing({
     location: req.body.location,
     price: req.body.price,
     hasDeposit: req.body.hasDeposit,
@@ -31,6 +33,7 @@ router.post('/:userId/roomOfferListings', function (req, res) {
   })
 })
 
+// create a room seeker listing for a user
 router.post('/:userId/roomSeekerListings', function (req, res) {
   const user = User.list.find(u => u.name === req.params.userId)
   // if (!user) return res.status(404).json({ error: 'User not found' })
